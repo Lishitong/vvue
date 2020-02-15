@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>
+      {{name}}
+    </p>
+    <p>{{test.p.d}}</p>
+    <p v-text='name' @click="test"></p>
+    <p v-html='name'></p>
+    <input type="text" v-model="name">
+  </div>
+</body>
+<script src="./compile.js"></script>
+<script src="./vue.js"></script>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      name: 'vv',
+      test:{
+        p:{
+          d:1
+        }
+      }
+    },
+    created(){
+      console.log('实例生成')
+      setTimeout(()=>{
+        this.data.name = 'vvvvv'
+      },2000)
+    },
+    methods:{
+      test(){
+          console.log(111)
+      }
+    }
+  })
+
+  console.log(app.name)
+  app.name = 'vue'
+  console.log(app.name)
+
+</script>
+
+</html>
